@@ -30,8 +30,8 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: gemini-3.8-flash
           LOOKBACK_DAYS: "7"
-          EMAIL_TO: ${{ secrets.EMAIL_TO || 'zachary.wills.roberts@gmail.com' }}
-          SMTP_USER: ${{ secrets.SMTP_USER || 'zachary.wills.roberts@gmail.com' }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
         run: python run_tracker.py --send-email
 

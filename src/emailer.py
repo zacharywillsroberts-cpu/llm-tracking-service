@@ -4,8 +4,8 @@ Sends the styled HTML report as the email body AND attaches the PDF report
 using Python's built-in `smtplib` (100% free, zero extra libraries needed).
 
 Required environment variables (stored in `.env` locally or GitHub Secrets):
-    EMAIL_TO          - Recipient email (e.g., zachary.wills.roberts@gmail.com)
-    SMTP_USER         - Sender Gmail address (usually the same Gmail address)
+    EMAIL_TO          - Recipient email address (or comma-separated list, e.g., you@example.com)
+    SMTP_USER         - Sender Gmail address (usually your own Gmail address)
     SMTP_APP_PASSWORD - 16-character Google App Password (NOT your regular password!)
 """
 
