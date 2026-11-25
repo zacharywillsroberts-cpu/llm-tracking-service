@@ -1,0 +1,595 @@
+{
+  "last_run": "2026-11-25T20:37:41Z",
+  "lookback_days": 30,
+  "ai_enabled": true,
+  "run_history": [
+    {
+      "timestamp": "2026-11-25T20:37:41Z",
+      "date": "2026-11-25",
+      "total_models": 19,
+      "new_models": 0,
+      "lookback_days": 30,
+      "ai_enabled": true
+    },
+    {
+      "timestamp": "2026-11-25T20:35:04Z",
+      "date": "2026-11-25",
+      "total_models": 19,
+      "new_models": 19,
+      "lookback_days": 30,
+      "ai_enabled": false
+    }
+  ],
+  "models": {
+    "aws::amazon-bedrock-adds-bedrock-runtime-endpoint-support-for-openai-daybre": {
+      "id": "aws::amazon-bedrock-adds-bedrock-runtime-endpoint-support-for-openai-daybre",
+      "provider": "AWS",
+      "service": "Amazon Bedrock",
+      "model_name": "OpenAI Daybreak Red (GPT-5.6 Cyber) on Bedrock",
+      "vendor": "OpenAI",
+      "release_date": "2026-11-24",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Amazon Bedrock adds runtime endpoint support for OpenAI's Daybreak Red (GPT-5.6 Cyber) specialized cybersecurity model in AWS GovCloud (US). This enables authorized government and enterprise red-team operators to perform vulnerability research and exploit defense workloads under managed cloud guardrails.",
+      "us_commercial_available": "Preview (US)",
+      "us_gov_available": "Yes (GovCloud US)",
+      "us_gov_notes": "Specifically launched for eligible customers within AWS GovCloud (US) for authorized cybersecurity and mission workloads.",
+      "us_commercial_pricing": "See official pricing page",
+      "us_gov_pricing": "Pay-per-token with typical GovCloud regional pricing tiers subject to program approval",
+      "pros": [
+        "Specialized architecture optimized for authorized offensive and defensive cybersecurity tasks",
+        "Direct integration into Bedrock runtime for enterprise governance and auditing",
+        "Directly available in high-compliance AWS GovCloud environments"
+      ],
+      "cons": [
+        "Access strictly gated to authorized organizations and vetting requirements",
+        "Limited to niche cybersecurity and vulnerability management use cases",
+        "Potential premium pricing compared to general-purpose foundation models"
+      ],
+      "source_url": "https://aws.amazon.com/about-aws/whats-new/2026/11/gpt-daybreak-red-runtime-govcloud/",
+      "source_type": "rss:AWS What's New",
+      "ai_enriched": true
+    },
+    "aws::amazon-opensearch-service-now-supports-opensearch-version-3-9": {
+      "id": "aws::amazon-opensearch-service-now-supports-opensearch-version-3-9",
+      "provider": "AWS",
+      "service": "Amazon Bedrock",
+      "model_name": "Amazon OpenSearch Service 3.9 (Vector & AI Agent Enhancements)",
+      "vendor": "Amazon",
+      "release_date": "2026-11-23",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Amazon OpenSearch Service now supports version 3.9, introducing significant vector memory optimizations and multi-provider LLM evaluation capabilities. This update enhances RAG retrieval quality and reduces hosting overhead for complex generative AI agent workflows.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Check GovCloud Matrix",
+      "us_gov_notes": "Engine version 3.9 rollouts across GovCloud partitions follow standard service deployment schedules.",
+      "us_commercial_pricing": "OpenSearch instance hours & storage pricing (see AWS pricing page)",
+      "us_gov_pricing": "Standard AWS GovCloud cluster compute and EBS storage rates",
+      "pros": [
+        "Reduced vector memory footprint lowers overall cluster infrastructure costs",
+        "Streamlined evaluation pipelines across multiple LLM providers for RAG",
+        "Enhanced access control primitives tailored for multi-agent workloads"
+      ],
+      "cons": [
+        "Infrastructure and cluster management required rather than pure serverless consumption",
+        "Requires index reindexing or migration steps to take advantage of engine 3.9 benefits",
+        "Vector engine optimizations require performance tuning for specific embedding sizes"
+      ],
+      "source_url": "https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-opensearch-opensearch-3-9",
+      "source_type": "rss:AWS What's New",
+      "ai_enriched": true
+    },
+    "aws::aws-waf-announces-automated-discovery-and-protection-for-llm-mcp-and-a": {
+      "id": "aws::aws-waf-announces-automated-discovery-and-protection-for-llm-mcp-and-a",
+      "provider": "AWS",
+      "service": "Amazon Bedrock",
+      "model_name": "AWS WAF AI Endpoint Protection with Bedrock Guardrails",
+      "vendor": "Amazon",
+      "release_date": "2026-11-23",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "AWS WAF now offers automated discovery and inline defense for LLM, Model Context Protocol (MCP), and Agent-to-Agent (A2A) endpoints. The integration leverages Amazon Bedrock Guardrails to protect API gateways and load balancers from prompt injection and automated threats.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Check GovCloud Matrix",
+      "us_gov_notes": "AWS WAF features typically roll out to GovCloud regions following commercial general availability.",
+      "us_commercial_pricing": "WAF rule evaluation fees plus Bedrock Guardrails pay-per-request pricing",
+      "us_gov_pricing": "Standard GovCloud WAF rule pricing plus GovCloud Bedrock Guardrail processing rates",
+      "pros": [
+        "Automatic perimeter discovery of exposed LLM, MCP, and A2A endpoints",
+        "Unified policy enforcement combining network-level WAF rules and semantic Bedrock Guardrails",
+        "Native integration across CloudFront, ALB, and API Gateway without agent code rewrites"
+      ],
+      "cons": [
+        "Introduces incremental network and semantic evaluation latency at the edge",
+        "Combines multiple billing dimensions across WAF rules and Bedrock inspection units",
+        "Requires careful tuning to avoid false positives on legitimate agent tool transactions"
+      ],
+      "source_url": "https://aws.amazon.com/about-aws/whats-new/2026/11/waf-ai-endpoint-discovery-protection/",
+      "source_type": "rss:AWS What's New",
+      "ai_enriched": true
+    },
+    "aws::updated-topic-watermarking-in-amazon-bedrock": {
+      "id": "aws::updated-topic-watermarking-in-amazon-bedrock",
+      "provider": "AWS",
+      "service": "Amazon Bedrock",
+      "model_name": "Amazon Bedrock Watermarking (Claude Sonnet 4.6, Opus 4.6/4.5, Haiku 4.5)",
+      "vendor": "Anthropic",
+      "release_date": "2026-11-25",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Amazon Bedrock updated its watermarking support to include Anthropic's latest generation models across Claude 4.5 and 4.6 tiers. This ensures verifiable provenance and synthetic content detection directly within enterprise Bedrock workflows.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Check GovCloud Matrix",
+      "us_gov_notes": "Watermarking compliance features depend on specific Claude 4.5/4.6 model availability within GovCloud regions.",
+      "us_commercial_pricing": "Pay-per-token (see Bedrock Pricing)",
+      "us_gov_pricing": "GovCloud regional rates per token based on underlying Claude model selection",
+      "pros": [
+        "Assists with regulatory and compliance standards around synthetic text provenance",
+        "Broad support across Claude 4.5 and 4.6 Opus, Sonnet, and Haiku model families",
+        "Zero-code implementation managed directly through Bedrock inference configurations"
+      ],
+      "cons": [
+        "Watermarking algorithms can slightly constrain token generation entropy",
+        "Dependent on downstream detection tooling to verify provenance signatures",
+        "Only applies to supported models within current Bedrock generation tiers"
+      ],
+      "source_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/watermarking.html",
+      "source_type": "rss:Amazon Bedrock Docs",
+      "ai_enriched": true
+    },
+    "aws::new-topic-trusted-access-programs-in-amazon-bedrock": {
+      "id": "aws::new-topic-trusted-access-programs-in-amazon-bedrock",
+      "provider": "AWS",
+      "service": "Amazon Bedrock",
+      "model_name": "Amazon Bedrock Trusted Access Programs",
+      "vendor": "Amazon",
+      "release_date": "2026-11-23",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "AWS introduced documentation and management workflows for Bedrock Trusted Access Programs, clarifying how customers request access to gated third-party models. This framework formalizes provider agreements, governance requirements, and custom telemetry opt-outs.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Check GovCloud Matrix",
+      "us_gov_notes": "Trusted Access Program approvals in GovCloud may require additional federal vetting or agency sponsor sign-off.",
+      "us_commercial_pricing": "No direct feature fee; standard underlying model consumption rates apply",
+      "us_gov_pricing": "Standard GovCloud underlying model usage fees upon program approval",
+      "pros": [
+        "Clear console visibility into enterprise approval states for restricted models",
+        "Standardized compliance agreements for third-party foundation model providers",
+        "Streamlines onboarding to cutting-edge or preview foundation models"
+      ],
+      "cons": [
+        "Administrative overhead and delay while awaiting model provider approvals",
+        "Provider-specific terms may introduce disparate data handling caveats",
+        "Not all partner models will be approved for all enterprise or gov tenancies"
+      ],
+      "source_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/trusted-access-programs.html",
+      "source_type": "rss:Amazon Bedrock Docs",
+      "ai_enriched": true
+    },
+    "aws::added-claude-fable-5-2-and-claude-mythos-5-2": {
+      "id": "aws::added-claude-fable-5-2-and-claude-mythos-5-2",
+      "provider": "AWS",
+      "service": "Amazon Bedrock",
+      "model_name": "Claude Fable 5.2 & Claude Mythos 5.2 on Bedrock",
+      "vendor": "Anthropic",
+      "release_date": "2026-11-09",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Anthropic's Claude Fable 5.2 and Claude Mythos 5.2 models are now supported on Amazon Bedrock via US, GovCloud, and Global cross-region inference endpoints. These frontier releases deliver advanced tool use, computer use, and adaptive thinking features for highly complex reasoning.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Yes (GovCloud US)",
+      "us_gov_notes": "Available at launch on Bedrock runtime endpoints via AWS GovCloud (US) cross-region inference.",
+      "us_commercial_pricing": "See official pricing page",
+      "us_gov_pricing": "Standard Bedrock GovCloud cross-region token rates with expected public sector premium",
+      "pros": [
+        "Next-generation adaptive, extended, and preserved thinking capabilities",
+        "Simultaneous launch across commercial US and AWS GovCloud environments",
+        "Deeply integrated tool use and automated computer interaction capabilities"
+      ],
+      "cons": [
+        "High computational overhead and latency when running complex thinking loops",
+        "Top-tier model pricing expected to be higher than previous Claude generations",
+        "Requires cross-region routing architectures to balance capacity"
+      ],
+      "source_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-anthropic.html",
+      "source_type": "rss:Amazon Bedrock Docs",
+      "ai_enriched": true
+    },
+    "aws::added-kimi-k3-1-pro-highspeed": {
+      "id": "aws::added-kimi-k3-1-pro-highspeed",
+      "provider": "AWS",
+      "service": "Amazon Bedrock",
+      "model_name": "Kimi K3.1 Pro - Highspeed on Bedrock",
+      "vendor": "Moonshot AI",
+      "release_date": "2026-11-04",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Moonshot AI's Kimi K3.1 Pro - Highspeed model is now accessible via the Amazon Bedrock runtime endpoint across US regions. It offers an optimized high-throughput solution for low-latency chat, reasoning, and long-context enterprise tasks.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Pending / Commercial Only",
+      "us_gov_notes": "Currently available in US and India commercial regions; not yet available in AWS GovCloud.",
+      "us_commercial_pricing": "See official pricing page",
+      "us_gov_pricing": "GovCloud availability not announced; GovCloud pricing unavailable",
+      "pros": [
+        "High-throughput, low-latency performance profile ideal for interactive agents",
+        "Expands Bedrock catalog diversity beyond Anthropic and Amazon models",
+        "Competitive performance on complex Chinese and multilingual reasoning tasks"
+      ],
+      "cons": [
+        "Unavailable in US sovereign and defense cloud partitions",
+        "Less familiar tooling and prompt optimization patterns compared to Claude or GPT",
+        "Regional endpoint availability limited at launch"
+      ],
+      "source_url": "https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-moonshot-ai-kimi-k3-1-highspeed.html",
+      "source_type": "rss:Amazon Bedrock Docs",
+      "ai_enriched": true
+    },
+    "azure::in-preview-public-preview-updated-guardrails-experience-in-microsoft-f": {
+      "id": "azure::in-preview-public-preview-updated-guardrails-experience-in-microsoft-f",
+      "provider": "Azure",
+      "service": "Azure AI Foundry / OpenAI",
+      "model_name": "Updated Guardrails Experience in Microsoft AI Foundry",
+      "vendor": "Microsoft",
+      "release_date": "2026-11-23",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Microsoft launched an updated Guardrails public preview in AI Foundry, allowing developers to orchestrate safety filters, deterministic rules, and LLM judges. The capability unifies project-level safety controls to comply with organizational compliance policies during runtime agent execution.",
+      "us_commercial_available": "Preview (US)",
+      "us_gov_available": "Check Azure Gov Catalog",
+      "us_gov_notes": "Azure AI Foundry preview features generally trail in US Gov Virginia and Arizona compliance enclaves.",
+      "us_commercial_pricing": "Preview usage tier (refer to Microsoft Foundry content safety pricing)",
+      "us_gov_pricing": "Azure Gov content moderation meter rates will apply upon government cloud deployment",
+      "pros": [
+        "Comprehensive blend of deterministic regex rules, classifiers, and LLM evaluators",
+        "Enforces organizational safety baselines at the project and tenant level",
+        "Directly integrates into multi-agent workflows built in Azure AI Foundry"
+      ],
+      "cons": [
+        "Currently in public preview with potential breaking API refinements",
+        "LLM-based judges add latency and token processing costs to runtime calls",
+        "Azure Gov rollout timeline not explicitly committed"
+      ],
+      "source_url": "https://azure.microsoft.com/updates?id=581338",
+      "source_type": "rss:Azure Updates",
+      "ai_enriched": true
+    },
+    "azure::retirement-support-for-azure-functions-openai-extension-ends-on-april-": {
+      "id": "azure::retirement-support-for-azure-functions-openai-extension-ends-on-april-",
+      "provider": "Azure",
+      "service": "Azure AI Foundry / OpenAI",
+      "model_name": "Azure Functions OpenAI Extension Deprecation Notice",
+      "vendor": "OpenAI",
+      "release_date": "2026-11-20",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Microsoft announced the deprecation of the Azure Functions OpenAI extension, with official support ending on April 20, 2027. Teams building serverless AI workflows must plan migrations to native OpenAI, Microsoft Foundry, or Azure AI Search SDKs.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Check Azure Gov Catalog",
+      "us_gov_notes": "Deprecation schedule applies across both commercial Azure and Azure Government environments.",
+      "us_commercial_pricing": "Standard Azure Functions compute execution fees (extension is free)",
+      "us_gov_pricing": "Standard Azure Government Functions consumption and dedicated plan rates",
+      "pros": [
+        "Extended deprecation runway provides teams over a year to refactor architectures",
+        "Encourages standardizing on modern, highly maintained Azure AI Foundry SDKs",
+        "Removes intermediate abstraction layer in favor of direct API capabilities"
+      ],
+      "cons": [
+        "Technical debt and refactoring required for existing serverless AI implementations",
+        "Trigger bindings and declarative simplicity of the extension will be lost",
+        "Requires redesigning state management and orchestration patterns"
+      ],
+      "source_url": "https://azure.microsoft.com/updates?id=579952",
+      "source_type": "rss:Azure Updates",
+      "ai_enriched": true
+    },
+    "azure::api-o3-mini-0131": {
+      "id": "azure::api-o3-mini-0131",
+      "provider": "Azure",
+      "service": "Azure AI Foundry / OpenAI (Live Price Catalog)",
+      "model_name": "OpenAI o3-mini (2025-01-31)",
+      "vendor": "OpenAI",
+      "release_date": "",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Microsoft Azure published live billing meters for OpenAI's o3-mini reasoning model across East US and US Gov Virginia. The model provides cost-effective, high-speed logical reasoning, math, and code generation for enterprise and sovereign workloads.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Yes (Azure Gov)",
+      "us_gov_notes": "Live billing meter active in US Gov Virginia offering FedRAMP High compliant inference.",
+      "us_commercial_pricing": "$1.21/1M in · $4.40/1M out",
+      "us_gov_pricing": "$1.51/1M in · $6.05/1M out",
+      "pros": [
+        "Substantially lower token cost than full frontier reasoning models",
+        "Available in US Gov Virginia with verified sovereign retail pricing",
+        "Exceptional performance on coding, mathematics, and structured logic"
+      ],
+      "cons": [
+        "Reasoning tokens add latency compared to non-reasoning mini models",
+        "Does not support multimodal image or audio input streams",
+        "US Gov rates represent a roughly 25-37% premium over commercial pricing"
+      ],
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+      "source_type": "api:prices.azure.com",
+      "ai_enriched": true
+    },
+    "azure::api-gpt-4o-mini-0718": {
+      "id": "azure::api-gpt-4o-mini-0718",
+      "provider": "Azure",
+      "service": "Azure AI Foundry / OpenAI (Live Price Catalog)",
+      "model_name": "OpenAI GPT-4o mini (2024-07-18)",
+      "vendor": "OpenAI",
+      "release_date": "",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Azure confirmed active retail pricing meters for GPT-4o mini (version 0718) across commercial US and US Gov Virginia regions. This ultra-fast, lightweight multimodal model is designed to handle high-volume, low-latency business operations at minimal expense.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Yes (Azure Gov)",
+      "us_gov_notes": "Active and available with dedicated billing meters in US Gov Virginia.",
+      "us_commercial_pricing": "$0.17/1M in · $0.66/1M out",
+      "us_gov_pricing": "$0.21/1M in · $0.82/1M out",
+      "pros": [
+        "Extremely low token pricing suitable for enterprise-scale classification and RAG",
+        "Sub-second latency with full multimodal text and vision input processing",
+        "Fully accredited and price-metered in Azure US Gov Virginia"
+      ],
+      "cons": [
+        "Lower reasoning ceiling on complex, multi-hop domain logic",
+        "Limited complex coding and advanced mathematics capabilities",
+        "Moderate GovCloud price premium over East US commercial tier"
+      ],
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+      "source_type": "api:prices.azure.com",
+      "ai_enriched": true
+    },
+    "azure::api-gpt-4o-1120": {
+      "id": "azure::api-gpt-4o-1120",
+      "provider": "Azure",
+      "service": "Azure AI Foundry / OpenAI (Live Price Catalog)",
+      "model_name": "OpenAI GPT-4o (2024-11-20)",
+      "vendor": "OpenAI",
+      "release_date": "",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Live billing meters are confirmed for GPT-4o (release 1120) across Azure East US and US Gov Virginia. This updated flagship checkpoint brings refined instruction following, improved coding output, and strong vision understanding to enterprise and defense applications.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Yes (Azure Gov)",
+      "us_gov_notes": "Verified billing meter live in US Gov Virginia for defense and federal civilian tenants.",
+      "us_commercial_pricing": "$2.50/1M in · $10.00/1M out",
+      "us_gov_pricing": "$3.44/1M in · $13.75/1M out",
+      "pros": [
+        "Updated training checkpoint with superior code generation and markdown formatting",
+        "Full multimodal input support including document layout and image analysis",
+        "Supported directly in US Gov Virginia for high-security regulated workloads"
+      ],
+      "cons": [
+        "Significant cost difference compared to GPT-4o mini tiers",
+        "US Gov price reflects a ~38% markup over standard US commercial rates",
+        "Strict rate limits and quota allocations during peak hours in government regions"
+      ],
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+      "source_type": "api:prices.azure.com",
+      "ai_enriched": true
+    },
+    "azure::api-gpt-4o-0513": {
+      "id": "azure::api-gpt-4o-0513",
+      "provider": "Azure",
+      "service": "Azure AI Foundry / OpenAI (Live Price Catalog)",
+      "model_name": "OpenAI GPT-4o (2024-05-13)",
+      "vendor": "OpenAI",
+      "release_date": "",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Azure maintains active billing meters for the original GPT-4o (0513) launch checkpoint across East US and US Gov Virginia. While superseded by newer versions, it remains available to ensure stability for validated federal enterprise pipelines.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Yes (Azure Gov)",
+      "us_gov_notes": "Metered and available in US Gov Virginia for legacy pipeline compatibility.",
+      "us_commercial_pricing": "$5.50/1M in · $15.00/1M out",
+      "us_gov_pricing": "$6.25/1M in · $18.75/1M out",
+      "pros": [
+        "High architectural stability for long-term certified production workloads",
+        "Established baseline for complex multimodal document extraction",
+        "Directly accessible in Azure Government cloud environments"
+      ],
+      "cons": [
+        "Priced substantially higher than newer GPT-4o iterations ($5.50/$15 vs $2.50/$10)",
+        "Superseded by more performant 1120 and subsequent checkpoint releases",
+        "Likely target for eventual Azure lifecycle retirement announcements"
+      ],
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+      "source_type": "api:prices.azure.com",
+      "ai_enriched": true
+    },
+    "azure::api-gpt-4-1-mini": {
+      "id": "azure::api-gpt-4-1-mini",
+      "provider": "Azure",
+      "service": "Azure AI Foundry / OpenAI (Live Price Catalog)",
+      "model_name": "OpenAI GPT-4.1 mini",
+      "vendor": "OpenAI",
+      "release_date": "",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Live billing meters detected on Azure Retail Prices API reveal the arrival of GPT-4.1 mini in East US and US Gov Virginia. This model serves as an intermediate high-efficiency foundation model bridging lightweight cost economics with modern 4.1 reasoning enhancements.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Yes (Azure Gov)",
+      "us_gov_notes": "Dedicated meter detected in US Gov Virginia enabling FedRAMP compliant use.",
+      "us_commercial_pricing": "$0.44/1M in · $1.76/1M out",
+      "us_gov_pricing": "$0.55/1M in · $2.20/1M out",
+      "pros": [
+        "Highly competitive mid-tier pricing between 4o-mini and flagship foundation models",
+        "Simultaneous live meter presence across commercial and US Gov Virginia regions",
+        "Well-balanced performance profile for high-volume enterprise automation"
+      ],
+      "cons": [
+        "Costs roughly 2.5x more than GPT-4o mini for high-throughput streaming",
+        "Lacks the deep step-by-step thinking traces found in o-series reasoning models",
+        "Documentation and feature cards still finalizing across Azure Foundry catalogs"
+      ],
+      "source_url": "https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/",
+      "source_type": "api:prices.azure.com",
+      "ai_enriched": true
+    },
+    "google::deepseek-v3-2-exp-is-available-through-model-garden": {
+      "id": "google::deepseek-v3-2-exp-is-available-through-model-garden",
+      "provider": "Google Cloud",
+      "service": "Google Vertex AI / Model Garden",
+      "model_name": "DeepSeek-V3.2-Exp on Vertex AI",
+      "vendor": "DeepSeek",
+      "release_date": "2025-09-30",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Google Cloud has integrated DeepSeek-V3.2-Exp into Vertex AI Model Garden as an experimental, high-efficiency model option. This enables Google Cloud developers to deploy and evaluate DeepSeek's latest architectural refinements using Vertex AI infrastructure.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Via Assured Workloads",
+      "us_gov_notes": "Deployable into compliant Assured Workloads projects depending on infrastructure hosting selection.",
+      "us_commercial_pricing": "Pay-per-token or Vertex AI custom endpoint compute rates (see pricing page)",
+      "us_gov_pricing": "Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)",
+      "pros": [
+        "Access to latest open-weights frontier experimental architecture from DeepSeek",
+        "One-click deployment to managed Vertex AI endpoints with auto-scaling",
+        "Cost-effective inference economics compared to proprietary frontier APIs"
+      ],
+      "cons": [
+        "Experimental release subject to rapid upstream iteration and potential deprecation",
+        "Requires custom endpoint GPU provisioning if serverless MaaS is unavailable",
+        "May require specialized prompt engineering and system prompt alignment"
+      ],
+      "source_url": "https://docs.cloud.google.com/vertex-ai/docs/release-notes#September_30_2025",
+      "source_type": "rss:Vertex AI Release Notes",
+      "ai_enriched": true
+    },
+    "google::deepseek-v3-1-terminus-is-available-through-model-garden": {
+      "id": "google::deepseek-v3-1-terminus-is-available-through-model-garden",
+      "provider": "Google Cloud",
+      "service": "Google Vertex AI / Model Garden",
+      "model_name": "DeepSeek-V3.1-Terminus on Vertex AI",
+      "vendor": "DeepSeek",
+      "release_date": "2025-09-22",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Vertex AI Model Garden has added DeepSeek-V3.1-Terminus to its catalog of managed foundation models. The release offers robust open reasoning and conversational capabilities optimized for private deployment on Google Cloud.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Via Assured Workloads",
+      "us_gov_notes": "Available for deployment in Assured Workloads FedRAMP/DoD IL4 boundaries via custom infrastructure.",
+      "us_commercial_pricing": "Pay-per-token or Vertex AI custom endpoint compute rates (see pricing page)",
+      "us_gov_pricing": "Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)",
+      "pros": [
+        "Proven reasoning benchmarks matching top open-source checkpoints",
+        "Deployable within customer VPCs on Google Cloud for strict data isolation",
+        "Native compatibility with Vertex AI evaluation and pipeline orchestration tools"
+      ],
+      "cons": [
+        "High GPU accelerator footprint required for self-hosted instances",
+        "Superseded by subsequent V3.2 series iterations",
+        "Cold-start latency considerations on self-managed endpoint pools"
+      ],
+      "source_url": "https://docs.cloud.google.com/vertex-ai/docs/release-notes#September_22_2025",
+      "source_type": "rss:Vertex AI Release Notes",
+      "ai_enriched": true
+    },
+    "google::embeddinggemma-and-deepseek-v3-1-models-are-available-through-model-ga": {
+      "id": "google::embeddinggemma-and-deepseek-v3-1-models-are-available-through-model-ga",
+      "provider": "Google Cloud",
+      "service": "Google Vertex AI / Model Garden",
+      "model_name": "EmbeddingGemma & DeepSeek-V3.1 on Vertex AI",
+      "vendor": "Google",
+      "release_date": "2025-09-09",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Google introduced EmbeddingGemma alongside DeepSeek-V3.1 and SEA-LION V4 multilingual models into Vertex AI Model Garden. This release significantly expands options for lightweight on-device vector search, semantic embeddings, and specialized regional language retrieval.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Via Assured Workloads",
+      "us_gov_notes": "Deployable within Assured Workloads environments subject to boundary resource policies.",
+      "us_commercial_pricing": "Pay-per-token (see Vertex AI Pricing)",
+      "us_gov_pricing": "Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)",
+      "pros": [
+        "EmbeddingGemma provides compact, high-efficiency vectors optimized for edge and enterprise RAG",
+        "Includes regional specialized models like SEA-LION V4 for Southeast Asian dialects",
+        "Tight native integration with Vertex AI Vector Search and Grounding engines"
+      ],
+      "cons": [
+        "Embedding migration across existing vector databases requires full re-embedding",
+        "SEA-LION models target niche regional languages outside core US enterprise use",
+        "Mixed hosting topologies require balancing MaaS versus self-hosted endpoints"
+      ],
+      "source_url": "https://docs.cloud.google.com/vertex-ai/docs/release-notes#September_09_2025",
+      "source_type": "rss:Vertex AI Release Notes",
+      "ai_enriched": true
+    },
+    "google::gemma-3-270m-wan-2-2-and-wan-2-1-models-are-available-through-model-ga": {
+      "id": "google::gemma-3-270m-wan-2-2-and-wan-2-1-models-are-available-through-model-ga",
+      "provider": "Google Cloud",
+      "service": "Google Vertex AI / Model Garden",
+      "model_name": "Gemma 3 270M, Wan 2.2 & Wan 2.1 on Vertex AI",
+      "vendor": "Google",
+      "release_date": "2025-08-14",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Google added the ultra-compact Gemma 3 270M lightweight SLM alongside Wan 2.1 and Wan 2.2 foundation models to Vertex AI Model Garden. This supports extreme edge and low-latency classification use cases as well as next-generation generative media generation pipelines.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Via Assured Workloads",
+      "us_gov_notes": "Gemma models can be hosted within Assured Workloads Gov boundaries on compliant GCE/Vertex compute.",
+      "us_commercial_pricing": "Pay-per-token or standard Vertex AI VM runtime pricing (see pricing page)",
+      "us_gov_pricing": "Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)",
+      "pros": [
+        "Gemma 3 270M offers minimal latency and memory footprint for edge/IoT deployment",
+        "Wan video/multimodal foundation models broaden creative media options on Vertex",
+        "Zero license licensing fees for open-weight weights under Google Gemma terms"
+      ],
+      "cons": [
+        "270M parameter scale severely restricts complex reasoning and multi-step logic",
+        "Wan models require heavy GPU memory and high infrastructure costs for video generation",
+        "Requires model fine-tuning to achieve acceptable quality on narrow tasks with 270M"
+      ],
+      "source_url": "https://docs.cloud.google.com/vertex-ai/docs/release-notes#August_14_2025",
+      "source_type": "rss:Vertex AI Release Notes",
+      "ai_enriched": true
+    },
+    "google::qwen3-coder-and-qwen3-235b-are-available-as-model-as-a-service-maas-mo": {
+      "id": "google::qwen3-coder-and-qwen3-235b-are-available-as-model-as-a-service-maas-mo",
+      "provider": "Google Cloud",
+      "service": "Google Vertex AI / Model Garden",
+      "model_name": "Qwen3 Coder & Qwen3 235B / OpenAI gpt-oss on Vertex MaaS",
+      "vendor": "Alibaba Cloud / OpenAI",
+      "release_date": "2025-08-13",
+      "first_seen": "2026-11-25",
+      "last_updated": "2026-11-25",
+      "is_new": true,
+      "summary": "Google Vertex AI Model Garden expanded its serverless Model-as-a-Service (MaaS) catalog to include Qwen3 Coder, Qwen3 235B, and OpenAI's open-weights gpt-oss (120b and 20b). This provides fully managed, pay-per-token API access to premier open coding and foundation models without infrastructure overhead.",
+      "us_commercial_available": "Yes (US Regions)",
+      "us_gov_available": "Via Assured Workloads",
+      "us_gov_notes": "MaaS availability in Assured Workloads depends on tenant compliance tier and data governance boundaries.",
+      "us_commercial_pricing": "Pay-per-token (see Vertex AI Pricing)",
+      "us_gov_pricing": "Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)",
+      "pros": [
+        "True serverless Model-as-a-Service consumption eliminating GPU cluster management",
+        "Qwen3 Coder delivers state-of-the-art open-source code synthesis and refactoring",
+        "Provides managed enterprise hosting for OpenAI's open-weights gpt-oss models"
+      ],
+      "cons": [
+        "Per-token MaaS pricing can become more expensive than dedicated clusters at massive volume",
+        "Subject to platform concurrency limits and multi-tenant quotas during peak traffic",
+        "Open-weight models deployed as MaaS may have restricted fine-tuning interfaces"
+      ],
+      "source_url": "https://docs.cloud.google.com/vertex-ai/docs/release-notes#August_13_2025",
+      "source_type": "rss:Vertex AI Release Notes",
+      "ai_enriched": true
+    }
+  }
+}

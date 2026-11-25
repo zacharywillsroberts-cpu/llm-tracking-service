@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weekly Cloud LLM Tracker Report — 2026-11-25</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --aws: #ea580c;
+      --aws-bg: #fff7ed;
+      --azure: #0284c7;
+      --azure-bg: #f0f9ff;
+      --gcp: #059669;
+      --gcp-bg: #ecfdf5;
+      --gov: #4f46e5;
+      --gov-bg: #eef2ff;
+      --new: #7c3aed;
+      --new-bg: #f5f3ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      padding: 28px 18px 60px;
+    }
+    .container { max-width: 1120px; margin: 0 auto; }
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #312e81 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .hero h1 { margin: 0 0 6px; font-size: 1.75rem; }
+    .hero p { margin: 0; color: #cbd5e1; font-size: 0.95rem; }
+    .print-btn {
+      background: #ffffff;
+      color: #0f172a;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+    .print-btn:hover { background: #e2e8f0; }
+    .banner {
+      background: #fefce8;
+      border: 1px solid #fde047;
+      color: #854d0e;
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 0.92rem;
+    }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+    .kpi {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .kpi-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .kpi-val { font-size: 1.7rem; font-weight: 700; margin-top: 4px; }
+    h2 { font-size: 1.25rem; margin: 28px 0 14px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      font-size: 0.88rem;
+      margin-bottom: 28px;
+    }
+    th, td { padding: 11px 13px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+    th { background: #f1f5f9; font-weight: 600; color: #334155; }
+    .badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge-aws { background: var(--aws-bg); color: var(--aws); border: 1px solid #fed7aa; }
+    .badge-azure { background: var(--azure-bg); color: var(--azure); border: 1px solid #bae6fd; }
+    .badge-gcp { background: var(--gcp-bg); color: var(--gcp); border: 1px solid #a7f3d0; }
+    .badge-new { background: var(--new-bg); color: var(--new); border: 1px solid #ddd6fe; }
+    .badge-gov { background: var(--gov-bg); color: var(--gov); border: 1px solid #c7d2fe; }
+    .cards { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      break-inside: avoid;
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .card h3 { margin: 0; font-size: 1.08rem; }
+    .meta { color: var(--muted); font-size: 0.84rem; margin-top: 4px; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin: 12px 0;
+      font-size: 0.88rem;
+    }
+    .pros-cons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .box {
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.88rem;
+    }
+    .box-pros { background: #f0fdf4; border: 1px solid #bbf7d0; }
+    .box-cons { background: #fffbeb; border: 1px solid #fde68a; }
+    .box h4 { margin: 0 0 6px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .box ul { margin: 0; padding-left: 18px; }
+    .box li { margin-bottom: 4px; }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { margin-top: 36px; text-align: center; color: var(--muted); font-size: 0.82rem; }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .print-btn { display: none; }
+      .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .badge, .box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div>
+        <h1>Cloud LLM Weekly Report</h1>
+        <p>Generated November 25, 2026 at 03:37 PM &middot; Lookback window: 30 days &middot; AWS, Azure &amp; Google Cloud (US &amp; US Gov)</p>
+      </div>
+      <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+    </header>
+
+    
+    <div class="banner"><strong>Analysis Mode:</strong> Enriched 19 model(s) with Gemini (gemini-3.8-flash).</div>
+    
+
+    <section class="kpis">
+      <div class="kpi"><div class="kpi-label">Models Tracked</div><div class="kpi-val">19</div></div>
+      <div class="kpi"><div class="kpi-label">New This Run</div><div class="kpi-val">19</div></div>
+      <div class="kpi"><div class="kpi-label">AWS Bedrock</div><div class="kpi-val">7</div></div>
+      <div class="kpi"><div class="kpi-label">Azure Foundry</div><div class="kpi-val">7</div></div>
+      <div class="kpi"><div class="kpi-label">Google Vertex AI</div><div class="kpi-val">5</div></div>
+      <div class="kpi"><div class="kpi-label">US Gov Highlighted</div><div class="kpi-val">7</div></div>
+    </section>
+
+    <h2>US &amp; US Gov Pricing &amp; Availability Summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Cloud</th>
+          <th>Model / Announcement</th>
+          <th>Vendor</th>
+          <th>US Commercial Price</th>
+          <th>US Gov Availability &amp; Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td>
+            <span class="badge badge-azure">
+              Azure
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>OpenAI o3-mini (2025-01-31)</strong>
+            
+          </td>
+          <td>OpenAI</td>
+          <td>$1.21/1M in · $4.40/1M out</td>
+          <td>
+            <span class="badge badge-gov">Yes (Azure Gov)</span>
+            <div class="meta">$1.51/1M in · $6.05/1M out</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-azure">
+              Azure
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>OpenAI GPT-4o mini (2024-07-18)</strong>
+            
+          </td>
+          <td>OpenAI</td>
+          <td>$0.17/1M in · $0.66/1M out</td>
+          <td>
+            <span class="badge badge-gov">Yes (Azure Gov)</span>
+            <div class="meta">$0.21/1M in · $0.82/1M out</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-azure">
+              Azure
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>OpenAI GPT-4o (2024-11-20)</strong>
+            
+          </td>
+          <td>OpenAI</td>
+          <td>$2.50/1M in · $10.00/1M out</td>
+          <td>
+            <span class="badge badge-gov">Yes (Azure Gov)</span>
+            <div class="meta">$3.44/1M in · $13.75/1M out</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-azure">
+              Azure
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>OpenAI GPT-4o (2024-05-13)</strong>
+            
+          </td>
+          <td>OpenAI</td>
+          <td>$5.50/1M in · $15.00/1M out</td>
+          <td>
+            <span class="badge badge-gov">Yes (Azure Gov)</span>
+            <div class="meta">$6.25/1M in · $18.75/1M out</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-azure">
+              Azure
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>OpenAI GPT-4.1 mini</strong>
+            
+          </td>
+          <td>OpenAI</td>
+          <td>$0.44/1M in · $1.76/1M out</td>
+          <td>
+            <span class="badge badge-gov">Yes (Azure Gov)</span>
+            <div class="meta">$0.55/1M in · $2.20/1M out</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-aws">
+              AWS
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>Amazon Bedrock Watermarking (Claude Sonnet 4.6, Opus 4.6/4.5, Haiku 4.5)</strong>
+            <div class="meta">2026-11-25</div>
+          </td>
+          <td>Anthropic</td>
+          <td>Pay-per-token (see Bedrock Pricing)</td>
+          <td>
+            <span class="badge badge-gov">Check GovCloud Matrix</span>
+            <div class="meta">GovCloud regional rates per token based on underlying Claude model selection</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-aws">
+              AWS
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>OpenAI Daybreak Red (GPT-5.6 Cyber) on Bedrock</strong>
+            <div class="meta">2026-11-24</div>
+          </td>
+          <td>OpenAI</td>
+          <td>See official pricing page</td>
+          <td>
+            <span class="badge badge-gov">Yes (GovCloud US)</span>
+            <div class="meta">Pay-per-token with typical GovCloud regional pricing tiers subject to program approval</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-azure">
+              Azure
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>Updated Guardrails Experience in Microsoft AI Foundry</strong>
+            <div class="meta">2026-11-23</div>
+          </td>
+          <td>Microsoft</td>
+          <td>Preview usage tier (refer to Microsoft Foundry content safety pricing)</td>
+          <td>
+            <span class="badge badge-gov">Check Azure Gov Catalog</span>
+            <div class="meta">Azure Gov content moderation meter rates will apply upon government cloud deployment</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-aws">
+              AWS
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>Amazon OpenSearch Service 3.9 (Vector & AI Agent Enhancements)</strong>
+            <div class="meta">2026-11-23</div>
+          </td>
+          <td>Amazon</td>
+          <td>OpenSearch instance hours & storage pricing (see AWS pricing page)</td>
+          <td>
+            <span class="badge badge-gov">Check GovCloud Matrix</span>
+            <div class="meta">Standard AWS GovCloud cluster compute and EBS storage rates</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-aws">
+              AWS
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>Amazon Bedrock Trusted Access Programs</strong>
+            <div class="meta">2026-11-23</div>
+          </td>
+          <td>Amazon</td>
+          <td>No direct feature fee; standard underlying model consumption rates apply</td>
+          <td>
+            <span class="badge badge-gov">Check GovCloud Matrix</span>
+            <div class="meta">Standard GovCloud underlying model usage fees upon program approval</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-aws">
+              AWS
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>AWS WAF AI Endpoint Protection with Bedrock Guardrails</strong>
+            <div class="meta">2026-11-23</div>
+          </td>
+          <td>Amazon</td>
+          <td>WAF rule evaluation fees plus Bedrock Guardrails pay-per-request pricing</td>
+          <td>
+            <span class="badge badge-gov">Check GovCloud Matrix</span>
+            <div class="meta">Standard GovCloud WAF rule pricing plus GovCloud Bedrock Guardrail processing rates</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-azure">
+              Azure
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>Azure Functions OpenAI Extension Deprecation Notice</strong>
+            <div class="meta">2026-11-20</div>
+          </td>
+          <td>OpenAI</td>
+          <td>Standard Azure Functions compute execution fees (extension is free)</td>
+          <td>
+            <span class="badge badge-gov">Check Azure Gov Catalog</span>
+            <div class="meta">Standard Azure Government Functions consumption and dedicated plan rates</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-aws">
+              AWS
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>Claude Fable 5.2 & Claude Mythos 5.2 on Bedrock</strong>
+            <div class="meta">2026-11-09</div>
+          </td>
+          <td>Anthropic</td>
+          <td>See official pricing page</td>
+          <td>
+            <span class="badge badge-gov">Yes (GovCloud US)</span>
+            <div class="meta">Standard Bedrock GovCloud cross-region token rates with expected public sector premium</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-aws">
+              AWS
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>Kimi K3.1 Pro - Highspeed on Bedrock</strong>
+            <div class="meta">2026-11-04</div>
+          </td>
+          <td>Moonshot AI</td>
+          <td>See official pricing page</td>
+          <td>
+            <span class="badge badge-gov">Pending / Commercial Only</span>
+            <div class="meta">GovCloud availability not announced; GovCloud pricing unavailable</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-gcp">
+              Google Cloud
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>DeepSeek-V3.2-Exp on Vertex AI</strong>
+            <div class="meta">2025-09-30</div>
+          </td>
+          <td>DeepSeek</td>
+          <td>Pay-per-token or Vertex AI custom endpoint compute rates (see pricing page)</td>
+          <td>
+            <span class="badge badge-gov">Via Assured Workloads</span>
+            <div class="meta">Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-gcp">
+              Google Cloud
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>DeepSeek-V3.1-Terminus on Vertex AI</strong>
+            <div class="meta">2025-09-22</div>
+          </td>
+          <td>DeepSeek</td>
+          <td>Pay-per-token or Vertex AI custom endpoint compute rates (see pricing page)</td>
+          <td>
+            <span class="badge badge-gov">Via Assured Workloads</span>
+            <div class="meta">Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-gcp">
+              Google Cloud
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>EmbeddingGemma & DeepSeek-V3.1 on Vertex AI</strong>
+            <div class="meta">2025-09-09</div>
+          </td>
+          <td>Google</td>
+          <td>Pay-per-token (see Vertex AI Pricing)</td>
+          <td>
+            <span class="badge badge-gov">Via Assured Workloads</span>
+            <div class="meta">Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-gcp">
+              Google Cloud
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>Gemma 3 270M, Wan 2.2 & Wan 2.1 on Vertex AI</strong>
+            <div class="meta">2025-08-14</div>
+          </td>
+          <td>Google</td>
+          <td>Pay-per-token or standard Vertex AI VM runtime pricing (see pricing page)</td>
+          <td>
+            <span class="badge badge-gov">Via Assured Workloads</span>
+            <div class="meta">Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)</div>
+          </td>
+        </tr>
+        
+        <tr>
+          <td>
+            <span class="badge badge-gcp">
+              Google Cloud
+            </span>
+            <div style="margin-top:4px;"><span class="badge badge-new">NEW</span></div>
+          </td>
+          <td>
+            <strong>Qwen3 Coder & Qwen3 235B / OpenAI gpt-oss on Vertex MaaS</strong>
+            <div class="meta">2025-08-13</div>
+          </td>
+          <td>Alibaba Cloud / OpenAI</td>
+          <td>Pay-per-token (see Vertex AI Pricing)</td>
+          <td>
+            <span class="badge badge-gov">Via Assured Workloads</span>
+            <div class="meta">Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)</div>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+
+    <h2>Detailed Model Breakdown (Pros, Cons &amp; US Gov Notes)</h2>
+    <div class="cards">
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>OpenAI o3-mini (2025-01-31)</h3>
+            <div class="meta">
+              Azure AI Foundry / OpenAI (Live Price Catalog) &middot; Vendor: OpenAI
+              
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-azure">Azure</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Microsoft Azure published live billing meters for OpenAI's o3-mini reasoning model across East US and US Gov Virginia. The model provides cost-effective, high-speed logical reasoning, math, and code generation for enterprise and sovereign workloads.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: $1.21/1M in · $4.40/1M out</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Yes (Azure Gov)<br />
+            <span class="meta">Price: $1.51/1M in · $6.05/1M out</span><br />
+            <span class="meta">Live billing meter active in US Gov Virginia offering FedRAMP High compliant inference.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Substantially lower token cost than full frontier reasoning models</li><li>Available in US Gov Virginia with verified sovereign retail pricing</li><li>Exceptional performance on coding, mathematics, and structured logic</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Reasoning tokens add latency compared to non-reasoning mini models</li><li>Does not support multimodal image or audio input streams</li><li>US Gov rates represent a roughly 25-37% premium over commercial pricing</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/" target="_blank" rel="noopener">https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>OpenAI GPT-4o mini (2024-07-18)</h3>
+            <div class="meta">
+              Azure AI Foundry / OpenAI (Live Price Catalog) &middot; Vendor: OpenAI
+              
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-azure">Azure</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Azure confirmed active retail pricing meters for GPT-4o mini (version 0718) across commercial US and US Gov Virginia regions. This ultra-fast, lightweight multimodal model is designed to handle high-volume, low-latency business operations at minimal expense.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: $0.17/1M in · $0.66/1M out</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Yes (Azure Gov)<br />
+            <span class="meta">Price: $0.21/1M in · $0.82/1M out</span><br />
+            <span class="meta">Active and available with dedicated billing meters in US Gov Virginia.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Extremely low token pricing suitable for enterprise-scale classification and RAG</li><li>Sub-second latency with full multimodal text and vision input processing</li><li>Fully accredited and price-metered in Azure US Gov Virginia</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Lower reasoning ceiling on complex, multi-hop domain logic</li><li>Limited complex coding and advanced mathematics capabilities</li><li>Moderate GovCloud price premium over East US commercial tier</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/" target="_blank" rel="noopener">https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>OpenAI GPT-4o (2024-11-20)</h3>
+            <div class="meta">
+              Azure AI Foundry / OpenAI (Live Price Catalog) &middot; Vendor: OpenAI
+              
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-azure">Azure</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Live billing meters are confirmed for GPT-4o (release 1120) across Azure East US and US Gov Virginia. This updated flagship checkpoint brings refined instruction following, improved coding output, and strong vision understanding to enterprise and defense applications.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: $2.50/1M in · $10.00/1M out</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Yes (Azure Gov)<br />
+            <span class="meta">Price: $3.44/1M in · $13.75/1M out</span><br />
+            <span class="meta">Verified billing meter live in US Gov Virginia for defense and federal civilian tenants.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Updated training checkpoint with superior code generation and markdown formatting</li><li>Full multimodal input support including document layout and image analysis</li><li>Supported directly in US Gov Virginia for high-security regulated workloads</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Significant cost difference compared to GPT-4o mini tiers</li><li>US Gov price reflects a ~38% markup over standard US commercial rates</li><li>Strict rate limits and quota allocations during peak hours in government regions</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/" target="_blank" rel="noopener">https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>OpenAI GPT-4o (2024-05-13)</h3>
+            <div class="meta">
+              Azure AI Foundry / OpenAI (Live Price Catalog) &middot; Vendor: OpenAI
+              
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-azure">Azure</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Azure maintains active billing meters for the original GPT-4o (0513) launch checkpoint across East US and US Gov Virginia. While superseded by newer versions, it remains available to ensure stability for validated federal enterprise pipelines.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: $5.50/1M in · $15.00/1M out</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Yes (Azure Gov)<br />
+            <span class="meta">Price: $6.25/1M in · $18.75/1M out</span><br />
+            <span class="meta">Metered and available in US Gov Virginia for legacy pipeline compatibility.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>High architectural stability for long-term certified production workloads</li><li>Established baseline for complex multimodal document extraction</li><li>Directly accessible in Azure Government cloud environments</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Priced substantially higher than newer GPT-4o iterations ($5.50/$15 vs $2.50/$10)</li><li>Superseded by more performant 1120 and subsequent checkpoint releases</li><li>Likely target for eventual Azure lifecycle retirement announcements</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/" target="_blank" rel="noopener">https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>OpenAI GPT-4.1 mini</h3>
+            <div class="meta">
+              Azure AI Foundry / OpenAI (Live Price Catalog) &middot; Vendor: OpenAI
+              
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-azure">Azure</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Live billing meters detected on Azure Retail Prices API reveal the arrival of GPT-4.1 mini in East US and US Gov Virginia. This model serves as an intermediate high-efficiency foundation model bridging lightweight cost economics with modern 4.1 reasoning enhancements.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: $0.44/1M in · $1.76/1M out</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Yes (Azure Gov)<br />
+            <span class="meta">Price: $0.55/1M in · $2.20/1M out</span><br />
+            <span class="meta">Dedicated meter detected in US Gov Virginia enabling FedRAMP compliant use.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Highly competitive mid-tier pricing between 4o-mini and flagship foundation models</li><li>Simultaneous live meter presence across commercial and US Gov Virginia regions</li><li>Well-balanced performance profile for high-volume enterprise automation</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Costs roughly 2.5x more than GPT-4o mini for high-throughput streaming</li><li>Lacks the deep step-by-step thinking traces found in o-series reasoning models</li><li>Documentation and feature cards still finalizing across Azure Foundry catalogs</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/" target="_blank" rel="noopener">https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>Amazon Bedrock Watermarking (Claude Sonnet 4.6, Opus 4.6/4.5, Haiku 4.5)</h3>
+            <div class="meta">
+              Amazon Bedrock &middot; Vendor: Anthropic
+               &middot; Announced: 2026-11-25
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-aws">AWS</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Amazon Bedrock updated its watermarking support to include Anthropic's latest generation models across Claude 4.5 and 4.6 tiers. This ensures verifiable provenance and synthetic content detection directly within enterprise Bedrock workflows.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: Pay-per-token (see Bedrock Pricing)</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Check GovCloud Matrix<br />
+            <span class="meta">Price: GovCloud regional rates per token based on underlying Claude model selection</span><br />
+            <span class="meta">Watermarking compliance features depend on specific Claude 4.5/4.6 model availability within GovCloud regions.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Assists with regulatory and compliance standards around synthetic text provenance</li><li>Broad support across Claude 4.5 and 4.6 Opus, Sonnet, and Haiku model families</li><li>Zero-code implementation managed directly through Bedrock inference configurations</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Watermarking algorithms can slightly constrain token generation entropy</li><li>Dependent on downstream detection tooling to verify provenance signatures</li><li>Only applies to supported models within current Bedrock generation tiers</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/watermarking.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/bedrock/latest/userguide/watermarking.html</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>OpenAI Daybreak Red (GPT-5.6 Cyber) on Bedrock</h3>
+            <div class="meta">
+              Amazon Bedrock &middot; Vendor: OpenAI
+               &middot; Announced: 2026-11-24
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-aws">AWS</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Amazon Bedrock adds runtime endpoint support for OpenAI's Daybreak Red (GPT-5.6 Cyber) specialized cybersecurity model in AWS GovCloud (US). This enables authorized government and enterprise red-team operators to perform vulnerability research and exploit defense workloads under managed cloud guardrails.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Preview (US)<br />
+            <span class="meta">Price: See official pricing page</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Yes (GovCloud US)<br />
+            <span class="meta">Price: Pay-per-token with typical GovCloud regional pricing tiers subject to program approval</span><br />
+            <span class="meta">Specifically launched for eligible customers within AWS GovCloud (US) for authorized cybersecurity and mission workloads.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Specialized architecture optimized for authorized offensive and defensive cybersecurity tasks</li><li>Direct integration into Bedrock runtime for enterprise governance and auditing</li><li>Directly available in high-compliance AWS GovCloud environments</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Access strictly gated to authorized organizations and vetting requirements</li><li>Limited to niche cybersecurity and vulnerability management use cases</li><li>Potential premium pricing compared to general-purpose foundation models</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://aws.amazon.com/about-aws/whats-new/2026/11/gpt-daybreak-red-runtime-govcloud/" target="_blank" rel="noopener">https://aws.amazon.com/about-aws/whats-new/2026/11/gpt-daybreak-red-runtime-govcloud/</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>Updated Guardrails Experience in Microsoft AI Foundry</h3>
+            <div class="meta">
+              Azure AI Foundry / OpenAI &middot; Vendor: Microsoft
+               &middot; Announced: 2026-11-23
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-azure">Azure</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Microsoft launched an updated Guardrails public preview in AI Foundry, allowing developers to orchestrate safety filters, deterministic rules, and LLM judges. The capability unifies project-level safety controls to comply with organizational compliance policies during runtime agent execution.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Preview (US)<br />
+            <span class="meta">Price: Preview usage tier (refer to Microsoft Foundry content safety pricing)</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Check Azure Gov Catalog<br />
+            <span class="meta">Price: Azure Gov content moderation meter rates will apply upon government cloud deployment</span><br />
+            <span class="meta">Azure AI Foundry preview features generally trail in US Gov Virginia and Arizona compliance enclaves.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Comprehensive blend of deterministic regex rules, classifiers, and LLM evaluators</li><li>Enforces organizational safety baselines at the project and tenant level</li><li>Directly integrates into multi-agent workflows built in Azure AI Foundry</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Currently in public preview with potential breaking API refinements</li><li>LLM-based judges add latency and token processing costs to runtime calls</li><li>Azure Gov rollout timeline not explicitly committed</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://azure.microsoft.com/updates?id=581338" target="_blank" rel="noopener">https://azure.microsoft.com/updates?id=581338</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>Amazon OpenSearch Service 3.9 (Vector & AI Agent Enhancements)</h3>
+            <div class="meta">
+              Amazon Bedrock &middot; Vendor: Amazon
+               &middot; Announced: 2026-11-23
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-aws">AWS</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Amazon OpenSearch Service now supports version 3.9, introducing significant vector memory optimizations and multi-provider LLM evaluation capabilities. This update enhances RAG retrieval quality and reduces hosting overhead for complex generative AI agent workflows.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: OpenSearch instance hours & storage pricing (see AWS pricing page)</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Check GovCloud Matrix<br />
+            <span class="meta">Price: Standard AWS GovCloud cluster compute and EBS storage rates</span><br />
+            <span class="meta">Engine version 3.9 rollouts across GovCloud partitions follow standard service deployment schedules.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Reduced vector memory footprint lowers overall cluster infrastructure costs</li><li>Streamlined evaluation pipelines across multiple LLM providers for RAG</li><li>Enhanced access control primitives tailored for multi-agent workloads</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Infrastructure and cluster management required rather than pure serverless consumption</li><li>Requires index reindexing or migration steps to take advantage of engine 3.9 benefits</li><li>Vector engine optimizations require performance tuning for specific embedding sizes</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-opensearch-opensearch-3-9" target="_blank" rel="noopener">https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-opensearch-opensearch-3-9</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>Amazon Bedrock Trusted Access Programs</h3>
+            <div class="meta">
+              Amazon Bedrock &middot; Vendor: Amazon
+               &middot; Announced: 2026-11-23
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-aws">AWS</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>AWS introduced documentation and management workflows for Bedrock Trusted Access Programs, clarifying how customers request access to gated third-party models. This framework formalizes provider agreements, governance requirements, and custom telemetry opt-outs.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: No direct feature fee; standard underlying model consumption rates apply</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Check GovCloud Matrix<br />
+            <span class="meta">Price: Standard GovCloud underlying model usage fees upon program approval</span><br />
+            <span class="meta">Trusted Access Program approvals in GovCloud may require additional federal vetting or agency sponsor sign-off.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Clear console visibility into enterprise approval states for restricted models</li><li>Standardized compliance agreements for third-party foundation model providers</li><li>Streamlines onboarding to cutting-edge or preview foundation models</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Administrative overhead and delay while awaiting model provider approvals</li><li>Provider-specific terms may introduce disparate data handling caveats</li><li>Not all partner models will be approved for all enterprise or gov tenancies</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/trusted-access-programs.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/bedrock/latest/userguide/trusted-access-programs.html</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>AWS WAF AI Endpoint Protection with Bedrock Guardrails</h3>
+            <div class="meta">
+              Amazon Bedrock &middot; Vendor: Amazon
+               &middot; Announced: 2026-11-23
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-aws">AWS</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>AWS WAF now offers automated discovery and inline defense for LLM, Model Context Protocol (MCP), and Agent-to-Agent (A2A) endpoints. The integration leverages Amazon Bedrock Guardrails to protect API gateways and load balancers from prompt injection and automated threats.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: WAF rule evaluation fees plus Bedrock Guardrails pay-per-request pricing</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Check GovCloud Matrix<br />
+            <span class="meta">Price: Standard GovCloud WAF rule pricing plus GovCloud Bedrock Guardrail processing rates</span><br />
+            <span class="meta">AWS WAF features typically roll out to GovCloud regions following commercial general availability.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Automatic perimeter discovery of exposed LLM, MCP, and A2A endpoints</li><li>Unified policy enforcement combining network-level WAF rules and semantic Bedrock Guardrails</li><li>Native integration across CloudFront, ALB, and API Gateway without agent code rewrites</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Introduces incremental network and semantic evaluation latency at the edge</li><li>Combines multiple billing dimensions across WAF rules and Bedrock inspection units</li><li>Requires careful tuning to avoid false positives on legitimate agent tool transactions</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://aws.amazon.com/about-aws/whats-new/2026/11/waf-ai-endpoint-discovery-protection/" target="_blank" rel="noopener">https://aws.amazon.com/about-aws/whats-new/2026/11/waf-ai-endpoint-discovery-protection/</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>Azure Functions OpenAI Extension Deprecation Notice</h3>
+            <div class="meta">
+              Azure AI Foundry / OpenAI &middot; Vendor: OpenAI
+               &middot; Announced: 2026-11-20
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-azure">Azure</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Microsoft announced the deprecation of the Azure Functions OpenAI extension, with official support ending on April 20, 2027. Teams building serverless AI workflows must plan migrations to native OpenAI, Microsoft Foundry, or Azure AI Search SDKs.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: Standard Azure Functions compute execution fees (extension is free)</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Check Azure Gov Catalog<br />
+            <span class="meta">Price: Standard Azure Government Functions consumption and dedicated plan rates</span><br />
+            <span class="meta">Deprecation schedule applies across both commercial Azure and Azure Government environments.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Extended deprecation runway provides teams over a year to refactor architectures</li><li>Encourages standardizing on modern, highly maintained Azure AI Foundry SDKs</li><li>Removes intermediate abstraction layer in favor of direct API capabilities</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Technical debt and refactoring required for existing serverless AI implementations</li><li>Trigger bindings and declarative simplicity of the extension will be lost</li><li>Requires redesigning state management and orchestration patterns</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://azure.microsoft.com/updates?id=579952" target="_blank" rel="noopener">https://azure.microsoft.com/updates?id=579952</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>Claude Fable 5.2 & Claude Mythos 5.2 on Bedrock</h3>
+            <div class="meta">
+              Amazon Bedrock &middot; Vendor: Anthropic
+               &middot; Announced: 2026-11-09
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-aws">AWS</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Anthropic's Claude Fable 5.2 and Claude Mythos 5.2 models are now supported on Amazon Bedrock via US, GovCloud, and Global cross-region inference endpoints. These frontier releases deliver advanced tool use, computer use, and adaptive thinking features for highly complex reasoning.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: See official pricing page</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Yes (GovCloud US)<br />
+            <span class="meta">Price: Standard Bedrock GovCloud cross-region token rates with expected public sector premium</span><br />
+            <span class="meta">Available at launch on Bedrock runtime endpoints via AWS GovCloud (US) cross-region inference.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Next-generation adaptive, extended, and preserved thinking capabilities</li><li>Simultaneous launch across commercial US and AWS GovCloud environments</li><li>Deeply integrated tool use and automated computer interaction capabilities</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>High computational overhead and latency when running complex thinking loops</li><li>Top-tier model pricing expected to be higher than previous Claude generations</li><li>Requires cross-region routing architectures to balance capacity</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-anthropic.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-anthropic.html</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>Kimi K3.1 Pro - Highspeed on Bedrock</h3>
+            <div class="meta">
+              Amazon Bedrock &middot; Vendor: Moonshot AI
+               &middot; Announced: 2026-11-04
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-aws">AWS</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Moonshot AI's Kimi K3.1 Pro - Highspeed model is now accessible via the Amazon Bedrock runtime endpoint across US regions. It offers an optimized high-throughput solution for low-latency chat, reasoning, and long-context enterprise tasks.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: See official pricing page</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Pending / Commercial Only<br />
+            <span class="meta">Price: GovCloud availability not announced; GovCloud pricing unavailable</span><br />
+            <span class="meta">Currently available in US and India commercial regions; not yet available in AWS GovCloud.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>High-throughput, low-latency performance profile ideal for interactive agents</li><li>Expands Bedrock catalog diversity beyond Anthropic and Amazon models</li><li>Competitive performance on complex Chinese and multilingual reasoning tasks</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Unavailable in US sovereign and defense cloud partitions</li><li>Less familiar tooling and prompt optimization patterns compared to Claude or GPT</li><li>Regional endpoint availability limited at launch</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-moonshot-ai-kimi-k3-1-highspeed.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-moonshot-ai-kimi-k3-1-highspeed.html</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>DeepSeek-V3.2-Exp on Vertex AI</h3>
+            <div class="meta">
+              Google Vertex AI / Model Garden &middot; Vendor: DeepSeek
+               &middot; Announced: 2025-09-30
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-gcp">Google Cloud</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Google Cloud has integrated DeepSeek-V3.2-Exp into Vertex AI Model Garden as an experimental, high-efficiency model option. This enables Google Cloud developers to deploy and evaluate DeepSeek's latest architectural refinements using Vertex AI infrastructure.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: Pay-per-token or Vertex AI custom endpoint compute rates (see pricing page)</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Via Assured Workloads<br />
+            <span class="meta">Price: Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)</span><br />
+            <span class="meta">Deployable into compliant Assured Workloads projects depending on infrastructure hosting selection.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Access to latest open-weights frontier experimental architecture from DeepSeek</li><li>One-click deployment to managed Vertex AI endpoints with auto-scaling</li><li>Cost-effective inference economics compared to proprietary frontier APIs</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Experimental release subject to rapid upstream iteration and potential deprecation</li><li>Requires custom endpoint GPU provisioning if serverless MaaS is unavailable</li><li>May require specialized prompt engineering and system prompt alignment</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://docs.cloud.google.com/vertex-ai/docs/release-notes#September_30_2025" target="_blank" rel="noopener">https://docs.cloud.google.com/vertex-ai/docs/release-notes#September_30_2025</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>DeepSeek-V3.1-Terminus on Vertex AI</h3>
+            <div class="meta">
+              Google Vertex AI / Model Garden &middot; Vendor: DeepSeek
+               &middot; Announced: 2025-09-22
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-gcp">Google Cloud</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Vertex AI Model Garden has added DeepSeek-V3.1-Terminus to its catalog of managed foundation models. The release offers robust open reasoning and conversational capabilities optimized for private deployment on Google Cloud.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: Pay-per-token or Vertex AI custom endpoint compute rates (see pricing page)</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Via Assured Workloads<br />
+            <span class="meta">Price: Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)</span><br />
+            <span class="meta">Available for deployment in Assured Workloads FedRAMP/DoD IL4 boundaries via custom infrastructure.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Proven reasoning benchmarks matching top open-source checkpoints</li><li>Deployable within customer VPCs on Google Cloud for strict data isolation</li><li>Native compatibility with Vertex AI evaluation and pipeline orchestration tools</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>High GPU accelerator footprint required for self-hosted instances</li><li>Superseded by subsequent V3.2 series iterations</li><li>Cold-start latency considerations on self-managed endpoint pools</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://docs.cloud.google.com/vertex-ai/docs/release-notes#September_22_2025" target="_blank" rel="noopener">https://docs.cloud.google.com/vertex-ai/docs/release-notes#September_22_2025</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>EmbeddingGemma & DeepSeek-V3.1 on Vertex AI</h3>
+            <div class="meta">
+              Google Vertex AI / Model Garden &middot; Vendor: Google
+               &middot; Announced: 2025-09-09
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-gcp">Google Cloud</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Google introduced EmbeddingGemma alongside DeepSeek-V3.1 and SEA-LION V4 multilingual models into Vertex AI Model Garden. This release significantly expands options for lightweight on-device vector search, semantic embeddings, and specialized regional language retrieval.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: Pay-per-token (see Vertex AI Pricing)</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Via Assured Workloads<br />
+            <span class="meta">Price: Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)</span><br />
+            <span class="meta">Deployable within Assured Workloads environments subject to boundary resource policies.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>EmbeddingGemma provides compact, high-efficiency vectors optimized for edge and enterprise RAG</li><li>Includes regional specialized models like SEA-LION V4 for Southeast Asian dialects</li><li>Tight native integration with Vertex AI Vector Search and Grounding engines</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Embedding migration across existing vector databases requires full re-embedding</li><li>SEA-LION models target niche regional languages outside core US enterprise use</li><li>Mixed hosting topologies require balancing MaaS versus self-hosted endpoints</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://docs.cloud.google.com/vertex-ai/docs/release-notes#September_09_2025" target="_blank" rel="noopener">https://docs.cloud.google.com/vertex-ai/docs/release-notes#September_09_2025</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>Gemma 3 270M, Wan 2.2 & Wan 2.1 on Vertex AI</h3>
+            <div class="meta">
+              Google Vertex AI / Model Garden &middot; Vendor: Google
+               &middot; Announced: 2025-08-14
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-gcp">Google Cloud</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Google added the ultra-compact Gemma 3 270M lightweight SLM alongside Wan 2.1 and Wan 2.2 foundation models to Vertex AI Model Garden. This supports extreme edge and low-latency classification use cases as well as next-generation generative media generation pipelines.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: Pay-per-token or standard Vertex AI VM runtime pricing (see pricing page)</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Via Assured Workloads<br />
+            <span class="meta">Price: Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)</span><br />
+            <span class="meta">Gemma models can be hosted within Assured Workloads Gov boundaries on compliant GCE/Vertex compute.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>Gemma 3 270M offers minimal latency and memory footprint for edge/IoT deployment</li><li>Wan video/multimodal foundation models broaden creative media options on Vertex</li><li>Zero license licensing fees for open-weight weights under Google Gemma terms</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>270M parameter scale severely restricts complex reasoning and multi-step logic</li><li>Wan models require heavy GPU memory and high infrastructure costs for video generation</li><li>Requires model fine-tuning to achieve acceptable quality on narrow tasks with 270M</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://docs.cloud.google.com/vertex-ai/docs/release-notes#August_14_2025" target="_blank" rel="noopener">https://docs.cloud.google.com/vertex-ai/docs/release-notes#August_14_2025</a>
+        </div>
+        
+      </article>
+      
+      <article class="card">
+        <div class="card-top">
+          <div>
+            <h3>Qwen3 Coder & Qwen3 235B / OpenAI gpt-oss on Vertex MaaS</h3>
+            <div class="meta">
+              Google Vertex AI / Model Garden &middot; Vendor: Alibaba Cloud / OpenAI
+               &middot; Announced: 2025-08-13
+              &middot; First tracked: 2026-11-25
+            </div>
+          </div>
+          <div>
+            <span class="badge badge-gcp">Google Cloud</span>
+            <span class="badge badge-new">NEW</span>
+          </div>
+        </div>
+
+        <p>Google Vertex AI Model Garden expanded its serverless Model-as-a-Service (MaaS) catalog to include Qwen3 Coder, Qwen3 235B, and OpenAI's open-weights gpt-oss (120b and 20b). This provides fully managed, pay-per-token API access to premier open coding and foundation models without infrastructure overhead.</p>
+
+        <div class="pricing-grid">
+          <div>
+            <strong>US Commercial:</strong> Yes (US Regions)<br />
+            <span class="meta">Price: Pay-per-token (see Vertex AI Pricing)</span>
+          </div>
+          <div>
+            <strong>US Gov:</strong> Via Assured Workloads<br />
+            <span class="meta">Price: Standard Vertex AI rates (+0% free tier or 5-20% Premium Assured Workloads tier)</span><br />
+            <span class="meta">MaaS availability in Assured Workloads depends on tenant compliance tier and data governance boundaries.</span>
+          </div>
+        </div>
+
+        <div class="pros-cons">
+          <div class="box box-pros">
+            <h4>Pros</h4>
+            <ul>
+              <li>True serverless Model-as-a-Service consumption eliminating GPU cluster management</li><li>Qwen3 Coder delivers state-of-the-art open-source code synthesis and refactoring</li><li>Provides managed enterprise hosting for OpenAI's open-weights gpt-oss models</li>
+            </ul>
+          </div>
+          <div class="box box-cons">
+            <h4>Cons &amp; Watchouts</h4>
+            <ul>
+              <li>Per-token MaaS pricing can become more expensive than dedicated clusters at massive volume</li><li>Subject to platform concurrency limits and multi-tenant quotas during peak traffic</li><li>Open-weight models deployed as MaaS may have restricted fine-tuning interfaces</li>
+            </ul>
+          </div>
+        </div>
+
+        
+        <div class="meta" style="margin-top: 10px;">
+          Official Source: <a href="https://docs.cloud.google.com/vertex-ai/docs/release-notes#August_13_2025" target="_blank" rel="noopener">https://docs.cloud.google.com/vertex-ai/docs/release-notes#August_13_2025</a>
+        </div>
+        
+      </article>
+      
+    </div>
+
+    <footer>
+      LLM Tracking Service &middot; Open this HTML file in any browser or use the companion PDF report in <code>reports/</code>.
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+name: Weekly Cloud LLM Report
+
+on:
+  schedule:
+    # Runs every Monday morning at 8:00 AM EST (13:00 UTC; 9:00 AM EDT during daylight saving time)
+    - cron: "0 13 * * 1"
+  # Lets you also trigger a run manually anytime from the GitHub Actions tab!
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  track-and-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run weekly LLM scan, generate HTML + PDF, and email report
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: gemini-3.8-flash
+          LOOKBACK_DAYS: "7"
+          EMAIL_TO: ${{ secrets.EMAIL_TO || 'zachary.wills.roberts@gmail.com' }}
+          SMTP_USER: ${{ secrets.SMTP_USER || 'zachary.wills.roberts@gmail.com' }}
+          SMTP_APP_PASSWORD: ${{ secrets.SMTP_APP_PASSWORD }}
+        run: python run_tracker.py --send-email
+
+      - name: Commit updated catalog and weekly reports back to GitHub
+        run: |
+          git config user.name "LLM Tracker Bot"
+          git config user.email "actions@github.com"
+          git add data/ reports/
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Weekly Cloud LLM report ($(date -u +%Y-%m-%d))"
+            git push
+          fi

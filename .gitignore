@@ -1,0 +1,19 @@
+# Python virtual environment (recreated via requirements.txt, never committed)
+.venv/
+venv/
+
+# Secret environment variables (API keys MUST NEVER be committed to Git!)
+.env
+
+# Python bytecode & cache files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# OS & editor clutter
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
